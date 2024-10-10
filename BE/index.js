@@ -1,4 +1,4 @@
-import { connection } from "./DB/models/connection";
+import { connection } from "./DB/models/connection.js";
 import { config } from "dotenv"
 
 
