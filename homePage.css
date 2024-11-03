@@ -1,0 +1,125 @@
+/* Start Header */
+header {
+    background-color: unset;
+}
+/* End Header */
+
+/* Start Landing */
+.landing {
+    min-height: 100vh;
+    background-image: url(images/earth1.jpg);
+    background-size: cover;
+    position: fixed; 
+    left: 0;
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 0;
+}
+
+.landing .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--transparent-secondary-color);
+    z-index: 1;
+}
+
+.landing #container{
+    width: 100%;
+    max-width: 700px;
+    margin: 1em auto;
+    position: absolute;
+    top: 24%;
+    left: 35%;
+    z-index: 2;
+}
+
+.landing .flight {
+    position: absolute;
+    left: 33%;
+    top: 25%;
+    z-index: 2;
+    width: 35%;
+    height: 70%;
+}
+
+/* .landing #plan {
+    animation: rotate 2s 1 ease-in-out;
+} */
+
+/* .landing #left, */
+.landing #html-spinner {
+    animation: opacity 2.5s 1 ease-in-out;
+}
+
+.landing #html-spinner img {
+    width: 70%;
+    height: 70%;
+}
+  
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1300px) {
+    .landing .flight {
+        left: 25%;
+        width: 50%;
+    }
+    .landing #html-spinner img {
+        position: fixed;
+        left: 25%;
+        width: 50%;
+        height: 70%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .landing .flight {
+        left: 10%;
+        width: 85%;
+        height: 60%;
+    }
+
+    .landing #html-spinner img {
+        position: fixed;
+        left: 18%;
+        width: 70%;
+        height: 60%;
+    }
+}
+
+@media (max-width: 767px) {
+    .landing .flight {
+        left: 13%;
+        top: 30%;
+        width: 80%;
+        height: 50%;
+    }
+
+    .landing #html-spinner img {
+        width: 60%;
+        height: 50%;
+        position: fixed;
+        top: 30%;
+        left: 25%
+    }
+}
+/* End Landing */
