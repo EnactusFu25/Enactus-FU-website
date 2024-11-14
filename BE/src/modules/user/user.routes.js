@@ -7,8 +7,6 @@ const router = Router()
 router.post("/add-recovery-email", userController.addRecoveryEmail)
 // change recovery email
 router.patch("/change-recovery-email", userController.changeRecoveryEmail)
-// remove recovery email
-router.delete("/remove-recovery-email", userController.removeRecoveryEmail)
 // update password
 router.patch("/update-password", userController.updatePassword)
 // update data
@@ -16,3 +14,4 @@ router.put("/update-data", userController.updateData)
 // verify email
 // router.post("/verify-email", userController.verifyEmail)
 
+export default router

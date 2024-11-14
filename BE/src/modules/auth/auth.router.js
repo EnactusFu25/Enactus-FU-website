@@ -8,3 +8,5 @@ const router = Router()
 router.post('/login', authController.login)
 router.post('/signup', authController.signup)
 // router.post('/forget-password', authController.forgetPassword)
+
+export default router

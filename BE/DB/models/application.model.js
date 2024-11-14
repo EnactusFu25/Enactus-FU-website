@@ -6,6 +6,16 @@ const applicationSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    answers:
+    [{
+        question: {
+            type: String,
+            required: true
+        },
+        answer: {
+            type: String
+        }
+    }],
     email: {
         type: String,
         required: true
@@ -13,6 +23,10 @@ const applicationSchema = mongoose.Schema({
     facebook: {
         type: String,
         required: true
+    },
+    form: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Forms"
     },
     phone: {
         type: String,
@@ -64,6 +78,14 @@ const applicationSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    isApproved: {
+        type: Boolean,
+        default: false
+    },
+    isRejected: {
+        type: Boolean,
+        default: false
+    },
     uploadedAt: {
         type: Date,
         default: Date.now,
@@ -77,6 +99,10 @@ const applicationSchema = mongoose.Schema({
         ref: "User"
     },
     approvedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+    rejectedBy:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
