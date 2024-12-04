@@ -22,6 +22,7 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12)
     const newUser = new User({ email, password: hashedPassword, name: `${firstName} ${lastName}`})
     await newUser.save()
+    // handle sending email
     res.status(201).json({message: 'user created successfuly'})
 }
 /* @TODO: implement forget password */

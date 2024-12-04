@@ -1,5 +1,6 @@
 import User from '../../../DB/models/user.model.js'
 import bcrypt from 'bcryptjs'
+
 export const addRecoveryEmail = async (req, res) => {
     const { email } = req.body
     const user = req.AuthUser

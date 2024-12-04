@@ -6,7 +6,11 @@ export const createForm = async (req, res) => {
     const isDepartmentExist = await Form.findOne({department})
     if (isDepartmentExist)
         return res.status(400).json({message: 'department already has a form'})
-    
+    const form = new Form({questions, department})
+    const formSaved = await form.save()
+    if (!formSaved)
+        return res.status(500).json({message: 'an error occured'})
+    res.status(201).json({message: 'form created'})
 }
 
 export const updateForm = async (req, res) => {

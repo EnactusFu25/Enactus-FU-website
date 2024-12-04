@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import { systemRoles } from "../../src/utils/system-roles"
 
 const userSchema = mongoose.Schema({
 
@@ -32,13 +33,14 @@ const userSchema = mongoose.Schema({
     {
         type: String,
         required: true,
-        enum: ["Admin", "HR", "Media"]
+        enum: [systemRoles.ADMIN, systemRoles.HR, systemRoles.MEDIA]
     },
     isDeleted:
     {
         type: Boolean,
         default: false
-    }
+    },
+    token: { type: String }
 })
 
 const userModel = mongoose.model("User", userSchema) || mongoose.models.User
