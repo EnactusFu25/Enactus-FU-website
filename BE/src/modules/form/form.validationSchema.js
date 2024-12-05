@@ -1,5 +1,5 @@
 import Joi from "joi"
-import * as generalValidationRule from "../../utils/general.validation.rules.js"
+import generalValidationRule from "../../utils/general.validation.rules.js"
 
 export const createFormSchema = {
 

@@ -1,5 +1,6 @@
 import Joi from "joi"
-import * as generalValidationRule from "../../utils/general.validation.rules.js"
+import generalValidationRule from "../../utils/general.validation.rules.js"
+import { departments } from "../../utils/globalImports.js"
    
 export const applySchema = Joi.object({
     body: Joi.object({
@@ -15,8 +16,8 @@ export const applySchema = Joi.object({
         whyInterested: Joi.string().required(),
         commitment: Joi.string().required(),
         previousRole: Joi.string().required(),
-        department: Joi.string().required(),
-        secondDepartment: Joi.string().required(),
+        department: Joi.string().required().valid(departments.PM, departments.HR, departments.PR, departments.LSC, departments.Market, departments.Media, departments.Presentation, departments.BE, departments.FE, departments.DA),
+        secondDepartment: Joi.string().valid(departments.PM, departments.HR, departments.PR, departments.LSC, departments.Market, departments.Media, departments.Presentation),
         form: generalValidationRule.dbId.required(),
         answers: Joi.array().items(Joi.object({
             question: Joi.string().required(),

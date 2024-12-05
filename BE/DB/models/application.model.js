@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { departments } from "../../src/utils/globalImports"
+import { departments } from "../../src/utils/globalImports.js"
 
 const applicationSchema = mongoose.Schema({
     name: {

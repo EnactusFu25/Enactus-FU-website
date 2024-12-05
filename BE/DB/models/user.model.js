@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { systemRoles } from "../../src/utils/system-roles"
+import { systemRoles } from "../../src/utils/system-roles.js"
 
 const userSchema = mongoose.Schema({
 

@@ -1,7 +1,6 @@
-import { connection } from "./DB/models/connection.js";
 import { config } from "dotenv"
 import { initiate_app } from "./src/initiate-app.js";
-
+import express from "express";
 config({path: "./config/dev.env"})
 
 
