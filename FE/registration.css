@@ -1,0 +1,207 @@
+.reg-container {
+    position: relative;
+    max-width: 1300px;
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 6px;
+    padding: 30px;
+    margin-top: 170px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.reg-container header {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--main-color);
+}
+
+.reg-container header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    background-color: var(--main-color);
+    border-radius: 8px;
+}
+
+.reg-container form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 1400px;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 20px 40px;
+}
+
+.reg-container form .form {
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    background-color: #fff;
+    transform: 0.3s ease;
+}
+
+.reg-container form .form.second {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+
+.reg-container form .setActive .form.second {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.reg-container form .setActive .form.first {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-200%);
+}
+
+.reg-container form .title {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 6px 0 8px;
+    color: var(--secondary-color);
+}
+
+/* .container form .title-id {
+    margin: 36px 0 8px;
+}  */
+
+.reg-container form .fields {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reg-container form .fields .input-field {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3 - 15px);
+    margin: 5px 0 20px;
+}
+
+.reg-container form .fields .radio {
+    display: flex;
+    flex-direction: row;
+}
+
+.reg-container form .fields .radio label {
+    margin-left: 5px;
+    min-width: 300px;
+}
+
+.reg-container form .fields .choose {
+    width: calc(100% / 2 - 15px);
+}
+
+.reg-container .input-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+
+.reg-container .input-field input {
+    height: 42px;
+    margin: 8px 0;
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+}
+
+.reg-container .input-field input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+.reg-container .input-field input[type="radio"] {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    border-radius: none;
+    font-size: 2px;
+    font-weight: normal;
+    color: none;
+    box-shadow: none;
+}
+
+.reg-container form .educational {
+    margin-top: 50px;
+}
+
+.reg-container form button,
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    color: #fff;
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 20px 0;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.reg-container form button:hover {
+    background-color: var(--main-color);
+}
+
+.reg-container form button i,
+.reg-container form .back-btn i {
+    margin: 0 6px;
+}
+
+.reg-container form .back-btn i {
+    transform: rotate(180deg);
+}
+
+.reg-container form .buttons {
+    display: flex;
+    align-items: center;
+}
+
+.reg-container form .buttons button,
+.back-btn {
+    margin-right: 14px;
+}
+
+
+@media (max-width: 750px) {
+    .reg-container form {
+        overflow-y: scroll;
+    }
+
+    .reg-container form::-webkit-scrollbar {
+        display: none;
+    }
+
+    .reg-container form .fields .input-field {
+        width: calc(100% / 2 - 15px);
+    }    
+}
+
+@media (max-width: 500px) {
+    .reg-container form .fields .input-field {
+        width: 100%;
+    } 
+}
