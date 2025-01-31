@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enactus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&#038;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="navBar.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="registration.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<body>
+    <!-- Start Header -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <img decoding="async" src="images/logo-white.png" alt="Logo" />
+      </a>
+      <nav>
+        <i class="fas fa-bars toggle-menu"></i>
+        <ul class="show">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="posts.html">Posts</a></li>
+          <li><a class="active" href="registration.html">Registration</a></li>
+          <li><a href="home.html">About</a></li>
+          <!-- <li><a href="home.html">Contact</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- End Header -->
+
+<!-- Start _Header -->
+<div class="_header">
+  <div class="_container">
+    <img decoding="async" class="_logo" src="" alt="" />
+    <div class="_links">
+      <span class="_icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <ul>
+          <li><a class="active" href="home.html">Home</a></li>
+          <li><a href="posts.html">Posts</a></li>
+          <li><a class="active" href="registration.html">Registration</a></li>
+          <li><a href="home.html">About</a></li>
+          <!-- <li><a href="#contact">Contact</a></li> -->
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End _Header -->
+
+    <!-- Registration Form -->
+    <div class="reg-container">
+        <header>Registration</header>
+
+        <form action="#" method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="name">Name ( الاسم )</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="number">Phone No. ( رقم الهاتف )</label>
+                            <input type="tel" name="number" id="number" placeholder="Enter your Number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="age">Age ( العمر )</label>
+                            <input type="number" name="age" id="age" placeholder="Enter your Age" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="email">Email ( البريد الالكتروني )</label>
+                            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="facebook">Facebook URL ( لينك الفيسبوك )</label>
+                            <input type="url" name="facebook" id="facebook" placeholder="Enter your Facebook URL" required>
+                        </div>
+
+                        <div class="input-field"></div>
+                    </div>
+                </div>
+
+                <div class="details educational">
+                    <span class="title">Educational Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="faculty">Faculty ( الكلية )</label>
+                            <input type="text" name="faculty" id="faculty" placeholder="Enter your Faculty" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="university">University ( الجامعة )</label>
+                            <input type="text" name="university" id="university" placeholder="Enter your University" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="grade">Grade ( الفرقة )</label>
+                            <input type="number" min="1" max="6" name="grade" id="grade" placeholder="Enter your Grade" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="apply">Did you apply for Enactus Fayoum university before? ( هل قدمت لايناكتس من قبل ؟ )</label>
+                            <input type="text" name="apply" id="apply" placeholder="Enter Yes or No" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="know">what do you know about Enactus fayoum university , and How do you know about us? ( ما الذي تعرفه عن ايناكتس جامعه الفيوم , وكيف علمت عننا ؟ )</label>
+                            <input type="text" name="know" id="know" placeholder="Enter your Answer" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="join">Why do you need to join Enactus Fayoum university , What do you expect to gain from Enactus? ( لماذا تريد الانضمام لايناكتس , ما الذي تتوقع ان تضيفه ايناكتس لك ؟ )</label>
+                            <input type="text" name="join" id="join" placeholder="Enter your Answer" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="hours">How many hours can you commit to Enactus per week? ( كم عدد الساعات الذي تستطيع ان تقدمها لايناكتس في الاسبوع ؟ )</label>
+                            <input type="number" name="hours" id="hours" placeholder="Enter a number of hours" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="other">Have you participated in other student Activities? ( هل شاركت في انشطه طلابيه من قبل ؟ )</label>
+                            <input type="text" name="other" id="other" placeholder="Enter Yes or No" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="role">If yes mention your role ( اذكر دورك اذا  شاركت )</label>
+                            <input type="text" name="role" id="role" placeholder="Enter your Answer" required>
+                        </div>
+
+                        <div class="input-field choose" style="margin-top: 30px;">
+                            <label>Select which department you want to apply in? ( اختر القسم الذي تريد الالتحاق به ؟ )</label><br>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="pm" value="PM ( project Management )">
+                                <label for="pm">PM ( project Management )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="pr" value="PR ( Public Relations )">
+                                <label for="pr">PR ( Public Relations )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="hr" value="HR ( Human Resources )">
+                                <label for="hr">HR ( Human Resources )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="logistics" value="logistics and supply chain">
+                                <label for="logistics">logistics and supply chain</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="marketing" value="Marketing">
+                                <label for="marketing">Marketing</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="multimedia" value="Multimedia">
+                                <label for="multimedia">Multimedia</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="presentation" value="Presentation">
+                                <label for="presentation">Presentation</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="backend" value="Back-End (Technical Support Team)">
+                                <label for="backend">Back-End (Technical Support Team)</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="frontend" value="Front-End (Technical Support Team)">
+                                <label for="frontend">Front-End (Technical Support Team)</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="data" value="Data Analysis ( Technical Support team)">
+                                <label for="data">Data Analysis ( Technical Support team)</label>
+                            </div>
+                        </div>
+
+                        <div class="input-field choose" style="margin-top: -90px;">
+                            <label>If you have an option to be in another department which department you would like to be in ?  ( اختر قسم اخر يمكنك الالتحاق به )</label><br>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_pm" value="PM ( project Management )">
+                                <label for="_pm">PM ( project Management )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_pr" value="PR ( Public Relations )">
+                                <label for="_pr">PR ( Public Relations )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_hr" value="HR ( Human Resources )">
+                                <label for="_hr">HR ( Human Resources )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_logistics" value="logistics and supply chain">
+                                <label for="_logistics">logistics and supply chain</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_marketing" value="Marketing">
+                                <label for="_marketing">Marketing</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_multimedia" value="Multimedia">
+                                <label for="_multimedia">Multimedia</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_presentation" value="Presentation">
+                                <label for="_presentation">Presentation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="next-btn">
+                    <span class="btn-text">Next</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+
+
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="date">Date of Birth</label>
+                            <input type="date" name="date" id="date" placeholder="Enter your Birth-date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="number">Phone No.</label>
+                            <input type="tel" name="number" id="number" placeholder="Enter your Number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="gender">Gender</label>
+                            <input type="text" name="gender" id="gender" placeholder="Male or Female" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="address">Address (Optional)</label>
+                            <input type="text" name="address" id="address" placeholder="Enter your Address">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details">
+                    <span class="title-id">Identity Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="date">Date of Birth</label>
+                            <input type="date" name="date" id="date" placeholder="Enter your Birth-date" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="number">Phone No.</label>
+                            <input type="tel" name="number" id="number" placeholder="Enter your Number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="gender">Gender</label>
+                            <input type="text" name="gender" id="gender" placeholder="Male or Female" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="address">Address (Optional)</label>
+                            <input type="text" name="address" id="address" placeholder="Enter your Address">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+          <div class="title">
+              <div class="logo">
+                  <img src="images/logo-white.png" alt="logo">
+              </div>
+          </div>
+          <div class="footer-content">
+              <div class="footerHUL">
+                  <h3>Recent News</h3>
+                  <ul class="footerUrl">
+                      <li>
+                          <a href="home.html">Home</a>
+                      </li>
+                      <li>
+                          <a href="posts.html">Posts</a>
+                      </li>
+                      <li>
+                          <a href="registration.html">Registration</a>
+                      </li>
+                      <li>
+                          <a href="home.html">About</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="footerHUL" id="contact">
+                  <h3>Contact Us</h3>
+                  <ul class="footerUrl right">
+                      <li>
+                          <i class="fa-brands fa-facebook me-2"></i>
+                          <a href="https://www.facebook.com/profile.php?id=61557134266414&mibextid=ZbWKwL" target="_blank">Facebook</a>
+                      </li>
+                      <li>
+                          <i class="fa-brands fa-linkedin me-2"></i>
+                          <a href="https://www.linkedin.com/company/enactus-fayoum-university/mycompany/" target="_blank">
+                          LinkedIn</a>
+                      </li>
+                      <li>
+                          <i class="fa-brands fa-instagram me-2"></i>
+                          <a href="https://www.instagram.com/enactus_fayoum_university" target="_blank">Instagram</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <script src="js/registration.js"></script>
+</body>
+</html>
