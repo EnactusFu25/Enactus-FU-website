@@ -9,10 +9,16 @@ const articleSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    media: [{
-        type: String
-    }],
+    Image: {
+        secure_url: { type: String, required: true },
+        public_id: { type: String, required: true, unique: true }
+    },
     isDeleted: {
+        type: Boolean,
+        default: false
+    },
+    imagesDeleted:
+    {
         type: Boolean,
         default: false
     },
@@ -37,6 +43,10 @@ const articleSchema = mongoose.Schema({
     deletedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+    },
+    approved:{
+        type: Boolean,
+        default: false
     },
     approvedBy: {
         type: mongoose.Schema.Types.ObjectId,

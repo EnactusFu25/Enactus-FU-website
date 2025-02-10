@@ -9,7 +9,6 @@ import * as userValidationSchema from "./user.validationSchema.js"
 
 const router = Router()
 
-// implement verify email and sending email messages
 
 router.post("/add-recovery-email",
     validation(userValidationSchema.addRecoveryEmailSchema),
@@ -27,6 +26,5 @@ router.put("/update-data",
     validation(userValidationSchema.updateDataSchema),
     auth(userEndpoints.manageUser),
     expressAsyncHandler(userController.updateData))
-// router.post("/verify-email", userController.verifyEmail)
 
 export default router

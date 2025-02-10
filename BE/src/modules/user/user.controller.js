@@ -53,7 +53,3 @@ export const updateData = async (req, res) => {
         return res.status(500).json({message: "an error occured"})
     res.status(200).json({message: "data updated"})
 }
-/**
- * @todo implement verify email
- */
-// export const verifyEmail = async (req, res) => {

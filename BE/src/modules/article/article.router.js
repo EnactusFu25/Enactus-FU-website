@@ -10,7 +10,6 @@ import * as articleValidationSchema from './article.validationSchema.js'
 import * as articleController from './article.controller.js'
 
 const router = Router();
-// implement images upload
 router.get('/',
     validation(articleValidationSchema.getArticlesSchema),
     expressAsyncHandler(articleController.getArticles))

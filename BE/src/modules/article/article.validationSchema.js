@@ -13,7 +13,8 @@ export const updateArticleSchema = Joi.object({
     body:
         Joi.object({
             title: Joi.string(),
-            content: Joi.string()
+            content: Joi.string(),
+            oldPublicId: Joi.string()
         }),
     query:
         Joi.object({
