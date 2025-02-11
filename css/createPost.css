@@ -1,0 +1,103 @@
+.create-post {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post #postsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#postContent {
+    padding: 15px;
+}
+
+.create-post .post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    /* background-color: #efefef; */
+    background-color: var(--transparent-secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 450px;
+    margin: 20px;
+}
+
+.create-post .post:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.create-post .post-body {
+    padding: 10px;
+    text-align: center;
+    min-height: 150px;
+}
+
+.create-post .post-body img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-bottom: 40px;
+}
+
+.create-post .post-body p {
+    max-width: 300px;
+    color: white;
+    font-size: 20px;
+}
+
+.create-post h3 {
+    margin-top: 50px;
+}
+
+.create-post .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-post button {
+    margin-top: 10px;
+    margin-right: 20px;
+    border: solid 1px var(--secondary-color);
+    border-radius: 10px;
+    padding-inline: 30px;
+    background-color: var(--transparent-secondary-color);
+    color: white;
+    padding: 10px 40px;
+    font-weight: bold;
+    box-shadow: rgb(1, 53, 100) 1.95px 1.95px 2.6px;
+}
+
+.create-post button:hover {
+    background-color: #fec122;
+    color: white;
+}
+
+.create-post .edit-button {
+    background-color: green;
+}
+
+.create-post .delete-button {
+    background-color: red;
+}
+
+@media (min-width: 769px) and (max-width: 1280px) {
+    .create-post .postsContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 750px) {
+    .create-post .post {
+        min-width: 300px;
+        margin: 0 auto 50px;
+    }
+}
