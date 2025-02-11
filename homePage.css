@@ -1,0 +1,371 @@
+/* Start Header */
+header {
+    background-color: unset;
+}
+/* End Header */
+
+/* Start Landing */
+.landing {
+    min-height: 100vh;
+    background-image: url(images/earth1.jpg);
+    background-size: cover;
+    position: fixed; 
+    left: 0;
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 0;
+}
+
+.landing .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--transparent-secondary-color);
+    z-index: 1;
+}
+
+.landing #container{
+    width: 100%;
+    max-width: 700px;
+    margin: 1em auto;
+    position: absolute;
+    top: 24%;
+    left: 35%;
+    z-index: 2;
+}
+
+.landing .flight {
+    position: absolute;
+    left: 33%;
+    top: 25%;
+    z-index: 2;
+    width: 35%;
+    height: 70%;
+}
+
+/* .landing #plan {
+    animation: rotate 2s 1 ease-in-out;
+} */
+
+/* .landing #left, */
+.landing #html-spinner {
+    animation: opacity 2.5s 1 ease-in-out;
+}
+
+.landing #html-spinner img {
+    width: 70%;
+    height: 70%;
+}
+  
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1300px) {
+    .landing .flight {
+        left: 25%;
+        width: 50%;
+    }
+    .landing #html-spinner img {
+        position: fixed;
+        left: 25%;
+        width: 50%;
+        height: 70%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .landing .flight {
+        left: 10%;
+        width: 85%;
+        height: 60%;
+    }
+
+    .landing #html-spinner img {
+        position: fixed;
+        left: 18%;
+        width: 70%;
+        height: 60%;
+    }
+}
+
+@media (max-width: 767px) {
+    .landing .flight {
+        left: 13%;
+        top: 30%;
+        width: 80%;
+        height: 50%;
+    }
+
+    .landing #html-spinner img {
+        width: 60%;
+        height: 50%;
+        position: fixed;
+        top: 30%;
+        left: 25%
+    }
+}
+/* End Landing */
+
+.white {
+    height: 100vh;
+}
+
+/* Start About-us */
+.about-us {
+    min-height: 100vh;
+    background-color: var(--transparent-secondary-color);
+    background-image: url("images/cover1.jpg");
+    background-size: cover;
+    position: relative;
+    opacity: 0.9;
+}
+
+.about-us .about-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--transparent-secondary-color);
+    opacity: 1;
+}
+
+.about-us .text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    padding: 50px;
+    background-color: rgba(0, 24, 35, 1);
+    color: var(--main-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-us .text .content {
+    max-width: 500px;
+}
+
+@media (max-width: 767px) {
+    .about-us .text {
+      width: 100%;
+    }
+    .about-us .text .content {
+      max-width: 100%;
+    }
+}
+
+.about-us .text .content h2 {
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.about-us .text .content p {
+    font-size: 15px;
+    line-height: 2;
+    color: white;
+}
+/* End About-us */
+
+/* Footer Styles */
+footer {
+    position: relative;
+    margin-top: 700px;
+    width: 100%;
+    background-color: rgba(0, 20, 38, 0.95);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    color: white;
+    z-index: 2;
+}
+
+footer .footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 10px;
+}
+
+footer .title {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+footer .logo img{
+    width: 70%;
+    height: 50%;
+    margin-bottom: 20px;
+}
+
+footer .logo p{
+    font-size: 14px;
+} 
+
+footer .footer-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+footer .footerHUL {
+    text-align: center;
+    flex: 1;
+    margin-right: 50px;
+    min-width: 200px;
+}
+
+footer .footerHUL h3 {
+    margin-bottom: 40px;
+    margin-left: 25px;
+    font-size: 20px;
+    background: var(--main-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+footer .footerUrl li {
+    list-style: none;
+    margin-bottom: 50px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+footer .footerUrl li:hover,
+footer a:hover {
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+footer .right li {
+    margin-bottom: 57px;
+}
+
+footer .footerUrl i {
+    margin-right: 10px;
+}
+
+footer .link-active {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer i {
+    color: white;
+    font-size: 20px;
+}
+
+footer .dropdown {
+    position: relative; 
+}
+
+footer .dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px 10px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0 6px;
+    cursor: pointer; 
+}
+
+footer .dropdown:hover .dropbtn {
+    background-color: var(--main-color);
+}
+
+footer .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 0; 
+    left: 61%; 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 200px;
+    background-color: white;
+}
+
+footer .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+footer .dropdown .dropdown-content a {
+    color: var(--secondary-color);
+    padding: 10px 6.5px; 
+    text-decoration: none;
+    display: inline-block;
+    text-align: left;
+    transition: background-color 0.3s; 
+}
+
+footer .dropdown-content a:hover {
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
+
+@media (max-width: 576px) {
+    footer .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    footer .footerHUL h3 {
+        margin-top: 50px;
+    }
+    footer .dropdown .dropbtn {
+        margin-left: -100px;
+    }
+    footer .dropdown .dropdown-content {
+        display: block;
+        left: 44%;
+    }
+}
+
+@media (max-width: 320px) {
+    footer .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    footer .footerHUL h3 {
+        margin-top: 50px;
+    }
+    footer .dropdown .dropbtn {
+        margin-left: -100px;
+    }
+    footer .dropdown .dropdown-content {
+        display: block;
+        left: 44%;
+    }
+}

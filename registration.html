@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.png" type="logo">
+    <title>Enactus Fayoum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&#038;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/navBar.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+    <!-- Start Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img decoding="async" src="images/logo-white.png" alt="Logo" />
+            </a>
+            <nav>
+                <i class="fas fa-bars toggle-menu"></i>
+                <ul class="show">
+                <li><a href="home.html">Home</a></li>
+                <li><a class="active" href="registration.html">Registration</a></li>
+                <li>
+                    <div class="dropdown">
+                      <button class="dropbtn">Gallery 
+                        <!-- <i class="fa fa-caret-down"></i> -->
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="posts.html" target="_blank">Posts</a>
+                        <a href="projects.html" target="_blank">Projects</a>
+                        <a href="events.html" target="_blank">Events</a>
+                      </div>
+                    </div> 
+                </li>
+                <li><a href="home.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- <li><a href="login.html"><i class="fa-solid fa-circle-user"></a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Start _Header -->
+    <div class="_header">
+        <div class="_container">
+            <img decoding="async" class="_logo" src="" alt="" />
+            <div class="_links">
+            <span class="_icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a class="active" href="registration.html">Registration</a></li>
+                <li>
+                    <div class="dropdown">
+                      <button class="dropbtn">Gallery 
+                        <!-- <i class="fa fa-caret-down"></i> -->
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="posts.html" target="_blank">Posts</a>
+                        <a href="projects.html" target="_blank">Projects</a>
+                        <a href="events.html" target="_blank">Events</a>
+                      </div>
+                    </div> 
+                </li>
+                <li><a href="home.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End _Header -->
+
+    <!-- Registration Form -->
+    <div class="reg-container">
+        <header>Registration</header>
+
+        <form action="#">
+            <div id="First" class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="name">Name ( الاسم )</label>
+                            <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="number">Phone No. ( رقم الهاتف )</label>
+                            <input type="tel" name="number" id="number" placeholder="Enter your Number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="age">Age ( العمر )</label>
+                            <input type="number" name="age" id="age" placeholder="Enter your Age" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="email">Email ( البريد الالكتروني )</label>
+                            <input type="email" name="email" id="email" placeholder="Enter your Email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="facebook">Facebook URL ( لينك الفيسبوك )</label>
+                            <input type="url" name="facebook" id="facebook" placeholder="Enter your Facebook URL" required>
+                        </div>
+
+                        <div class="input-field"></div>
+                    </div>
+                </div>
+
+                <div class="details educational">
+                    <span class="title">Educational Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="faculty">Faculty ( الكلية )</label>
+                            <input type="text" name="faculty" id="faculty" placeholder="Enter your Faculty" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="university">University ( الجامعة )</label>
+                            <input type="text" name="university" id="university" placeholder="Enter your University" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="grade">Grade ( الفرقة )</label>
+                            <input type="number" min="1" max="6" name="grade" id="grade" placeholder="Enter your Grade" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="apply">Did you apply for Enactus Fayoum university before? ( هل قدمت لايناكتس من قبل ؟ )</label>
+                            <input type="text" name="apply" id="apply" placeholder="Enter Yes or No" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="know">what do you know about Enactus fayoum university , and How do you know about us? ( ما الذي تعرفه عن ايناكتس جامعه الفيوم , وكيف علمت عننا ؟ )</label>
+                            <input type="text" name="know" id="know" placeholder="Enter your Answer" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="join">Why do you need to join Enactus Fayoum university , What do you expect to gain from Enactus? ( لماذا تريد الانضمام لايناكتس , ما الذي تتوقع ان تضيفه ايناكتس لك ؟ )</label>
+                            <input type="text" name="join" id="join" placeholder="Enter your Answer" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="hours">How many hours can you commit to Enactus per week? ( كم عدد الساعات الذي تستطيع ان تقدمها لايناكتس في الاسبوع ؟ )</label>
+                            <input type="number" min="1" name="hours" id="hours" placeholder="Enter a number of hours" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="other">Have you participated in other student Activities? ( هل شاركت في انشطه طلابيه من قبل ؟ )</label>
+                            <input type="text" name="other" id="other" placeholder="Enter Yes or No" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label for="role">If yes mention your role ( اذكر دورك اذا  شاركت )</label>
+                            <input type="text" name="role" id="role" placeholder="Enter your Answer" required>
+                        </div>
+
+                        <div class="input-field choose" style="margin-top: 30px;">
+                            <label>Select which department you want to apply in? ( اختر القسم الذي تريد الالتحاق به ؟ )</label><br>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="pm" value="PM">
+                                <label for="pm">PM ( project Management )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="pr" value="PR">
+                                <label for="pr">PR ( Public Relations )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="hr" value="HR">
+                                <label for="hr">HR ( Human Resources )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="logistics" value="LOGISTICS">
+                                <label for="logistics">Logistics and supply chain</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="marketing" value="MARKETING">
+                                <label for="marketing">Marketing</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="multimedia" value="MEDIA">
+                                <label for="multimedia">Multimedia</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="presentation" value="PRESENTATION">
+                                <label for="presentation">Presentation</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="backend" value="BACKEND">
+                                <label for="backend">Back-End (Technical Support Team)</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="frontend" value="FRONTEND">
+                                <label for="frontend">Front-End (Technical Support Team)</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="dep" id="data" value="DATA">
+                                <label for="data">Data Analysis ( Technical Support team)</label>
+                            </div>
+                        </div>
+
+                        <div class="input-field choose" style="margin-top: -90px;">
+                            <label>If you have an option to be in another department which department you would like to be in ?  ( اختر قسم اخر يمكنك الالتحاق به )</label><br>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_pm" value="PM ( project Management )">
+                                <label for="_pm">PM ( project Management )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_pr" value="PR ( Public Relations )">
+                                <label for="_pr">PR ( Public Relations )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_hr" value="HR ( Human Resources )">
+                                <label for="_hr">HR ( Human Resources )</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_logistics" value="logistics and supply chain">
+                                <label for="_logistics">logistics and supply chain</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_marketing" value="Marketing">
+                                <label for="_marketing">Marketing</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_multimedia" value="Multimedia">
+                                <label for="_multimedia">Multimedia</label>
+                            </div>
+                            <div class="input-field radio">
+                                <input type="radio" name="sec-dep" id="_presentation" value="Presentation">
+                                <label for="_presentation">Presentation</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="next-btn" onclick="next()">
+                    <span class="btn-text">Next</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+
+
+            <div id="second-PM" class="hidden">
+                <div class="details">
+                    <span class="title">PM ( Project Management )</span>
+        
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Do you have any experience in scientific research? If yes mention them</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Mention any problem in society and the steps to solve it ( اذكر مشكله في المجتمع وخطوات حلها )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Suggest an idea for a project you think it will help many people in Egypt now a day. (اقترح  فكره لمشروع تعتقد انه سيساعد المواطنين في مصر هذه الأيام )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Tell me about a problem you faced in your life and how did you solve it? ( مثال لمشكله واجهتك وكيفيه تغلبك عليها )</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-PR" class="hidden">
+                <div class="details">
+                    <span class="title">PR ( Public Relations )</span>
+        
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Why do select the public relations department? ( لماذا اخترت قسم العلاقات العامة ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Why do companies need public relation? ( لماذا تحتاج الشركات للعلاقات العامة ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What personality characteristics are most important to be successful in public relation? ( ما اهم الصفات الشخصية التي يجب توافرها لكي تكون ناجح في العلاقات العامة )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Give some idea for events that you can get fund from. ( اقترح بعض الأفكار لمناسبات يمكنك استخراج تمويل منها )</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-HR" class="hidden">
+                <div class="details">
+                    <span class="title">HR ( Human Resources )</span>
+        
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>What is the meaning of HR? ( ما هو معني الموارد البشرية ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Give a rate for your leadership skills ( اعطي تقييم لمستواك كقائد )</label>
+                            <input type="number" min="1" max="10" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What are your leadership experiences? ( ما هي تجاربك القيادية ؟)</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Tell me about a problem you faced in your life and how did you solve it? ( مثال لمشكله واجهتك وكيفيه تغلبك عليها ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What types of people do you find difficult to interact with? ( ما هي أنواع الأشخاص التي تجد صعوبة في التفاعل والتعامل معهم ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Rate your ability to use Microsoft office programs ( اعطي تقييم علي قدرتك في استخدام برامج المايكروسوفت اوفيس )</label>
+                            <input type="number" min="1" max="10" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What is the meaning and difference between HRM & HRD?  ( Mention 3 difference )</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-LOGISTICS" class="hidden">
+                <div class="details">
+                    <span class="title">Logistics</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>What do you know about Logistics & Supply chain?</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Do you have any experience in logistic?</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-MARKETING" class="hidden">
+                <div class="details">
+                    <span class="title">Marketing</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Why do you select this department? ( لماذا اخترت مجال التسويق ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Do you have any experience before in marketing skills? ( هل لديك أي خبره في مجال التسويق من قبل؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>If yes please mention it ( اذا كانت الإجابة نعم اذكر ما خبرتك )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Write a post about any thing you like. ( اكتب بوست عن أي شيء يعجبك )</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-MEDIA" class="hidden">
+                <div class="details">
+                    <span class="title">Multimedia</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Which section do you want to apply? ( أي قسم تريد الالتحاق به ؟ ) => Graphic design, Video graphing, Video editing</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Why do you need to join this department , What do you expect to gain from this?</label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Do you have any experience? if yes mention them</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>If your choice is a graphic designer which programs do you use</label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="input-field">
+                            <label>If your choice to a photographer , what is the type of camera you use in photographing</label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Upload some of your work ( قم بتحميل بعض من اعمالك سواء صوره او Design )</label>
+                            <label>اذ لم تتمكن من رفع صور قم بوضع  رابط  Google drive or Behance يحتوي على بعض اعمالك</label>
+                            <input type="file">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-PRESENTATION" class="hidden">
+                <div class="details">
+                    <span class="title">Presentation</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Do you have any experience with being a presenter? If yes , explain</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What qualifies you to be a presenter?</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Have you ever been through an issue while presenting, and how did you deal with it? If yes , tell us in a short brief</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Send videos or pictures while you were presenting recently . ( Last period of time )</label>
+                            <input type="file" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What is the distinctive way you like to present with ? ( Video rec. live presenting using ppt, etc. )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Explain the way you interact with the audience while presenting.</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>your level in English => Beginner, intermediate, fluent</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-BACKEND" class="hidden">
+                <div class="details">
+                    <span class="title">BackEnd</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Do you have any experience in programming said yes which programming language? ( هل لديك خبره في البرمجة؟ واذا جاوبت بنعم ما هي لغة البرمجة؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>How many years have you been practicing? ( كم عدد سنين ممارستك؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Did you make any projects while learning? If yes give a brief explanation ( هل لديك مشاريع أثناء تعلمك؟ اذا جاوبت بنعم وضح )</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-FRONTEND" class="hidden">
+                <div class="details">
+                    <span class="title">FrontEnd</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>What do you know about the Front-End track? ( ما الذي تعرفه عن مسار الواجهة الأمامية ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Do you have any experiences in Front-End? ( هل لديك أي خبرة في مجال الواجهة الأمامية ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What are programming languages ​​do you use? ( ما هي لغات البرمجة التي تستخدمها ؟ )</label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="input-field">
+                            <label>Why did you choose the Front-End track? ( لماذا قمت باختيار مسار الواجهة الأمامية ؟ )</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What does HTML stand for? (  ؟ HTML إلى ماذا يشير الاختصار )</label>
+                            <input type="text">
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What can we do by CSS? ( ؟ CSS ماذا يمكننا أن نفعل باستخدام  )</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="second-DATA" class="hidden">
+                <div class="details">
+                    <span class="title">Data Analysis</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>How can we use excel or SQL in data analysis?</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What the difference between qualitative data and quantitative data?</label>
+                            <input type="text" required>
+                        </div>
+        
+                        <div class="input-field">
+                            <label>What the difference between etl and eda?</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="back-btn" onclick="back()">
+                        <i class="uil uil-navigator"></i>
+                        <span class="btn-text">Back</span>
+                    </button>
+
+                    <button type="submit" class="submit">
+                        <span class="btn-text">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="coming-soon">
+        <h1>Coming Soon</h1>
+        <p>We're working hard to bring you something amazing. Stay tuned!</p>
+        <div class="countdown">
+            <div>
+                <span id="days">00</span>
+                <span>Days</span>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <span>Hours</span>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <span>Minutes</span>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <span>Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+          <div class="title">
+            <div class="logo">
+                <img src="images/logo-white.png" alt="logo" >
+                <p style="text-decoration: underline;">Powered by:</p>
+                <p><a href="https://www.linkedin.com/in/salma-yasser-239145221/" target="_blank">Salma Yasser ( President'25 )</a></p>
+                <p><a href="https://www.linkedin.com/in/omar-tarek-048b07265/" target="_blank">Omar Tarek ( Vice President'25 )</a></p>
+                <p><a href="https://www.linkedin.com/in/saja-malek/" target="_blank">Saja Malek ( Front-End Developer )</a></p>
+                <p><a href="https://www.linkedin.com/in/assem-amr-abdelfattah/" target="_blank">Assem Amr ( Back-End Developer )</a></p>
+                <p><a href="https://www.linkedin.com/company/code-gate/" target="_blank">CodeGate ( Partner )</a></p>
+            </div>
+          </div>
+          <div class="footer-content">
+              <div class="footerHUL">
+                  <h3>Recent News</h3>
+                  <ul class="footerUrl">
+                      <li>
+                          <a href="home.html">Home</a>
+                      </li>
+                      <li>
+                        <a href="registration.html">Registration</a>
+                      </li>
+                      <li>
+                        <div class="dropdown">
+                          <button class="dropbtn">Gallery 
+                            <!-- <i class="fa fa-caret-down"></i> -->
+                          </button>
+                          <div class="dropdown-content">
+                            <a href="posts.html" target="_blank">Posts</a>
+                            <a href="projects.html" target="_blank">Projects</a>
+                            <a href="events.html" target="_blank">Events</a>
+                          </div>
+                        </div> 
+                      </li>
+                      <li>
+                          <a href="home.html">About</a>
+                      </li>
+                  </ul>
+              </div>
+              <div class="footerHUL" id="contact">
+                  <h3>Contact Us</h3>
+                  <ul class="footerUrl right">
+                      <li>
+                          <i class="fa fa-facebook-square"></i>
+                          <a href="https://www.facebook.com/profile.php?id=61557134266414&mibextid=ZbWKwL" target="_blank">Facebook</a>
+                      </li>
+                      <li>
+                          <i class="fa fa-linkedin-square"></i>
+                          <a href="https://www.linkedin.com/company/enactus-fayoum-university/mycompany/" target="_blank">
+                          LinkedIn</a>
+                      </li>
+                      <li>
+                          <i class="fa fa-instagram"></i>
+                          <a href="https://www.instagram.com/enactusfayomuniversity/" target="_blank">Instagram</a>
+                      </li>
+                      <li>
+                        <i class="fa fa-tiktok"></i>
+                        <a href="https://www.tiktok.com/@enactus_fayoumuniversity?is_from_webapp=1&sender_device=pc" target="_blank">Tiktok</a>
+                    </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+</footer>
+
+<!-- <script src="js/registration.js"></script> -->
+<script src="js/soon.js"></script>
+</body>
+</html>
