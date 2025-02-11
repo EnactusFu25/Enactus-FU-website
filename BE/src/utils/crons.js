@@ -1,8 +1,8 @@
 import { scheduleJob } from "node-schedule"
 import { DateTime } from "luxon"
 
-import Article from "../DB/models/article.model.js"
-import User from "../DB/models/user.model.js"
+import Article from "../../DB/models/article.model.js"
+import User from "../../DB/models/user.model.js"
 
 export function DeleteOldImages()
 {

@@ -3,10 +3,10 @@ import Forms from '../../../DB/models/form.model.js'
 
 export const apply = async (req, res) => {
     const { email, name, phone, facebook, age, faculty,
-    university, year, firstTime, whyInterested, commitment, previousRole,
+    university, year, firstTime, whatDoYouKnowEnactus, whyInterested, commitment, previousRole,
     department, secondDepartment, form, answers} = req.body
 
-    const isFormExist = await Forms.findById(form)
+    const isFormExist = await Forms.find({department})
 
     if (!isFormExist)
         return res.status(404).json({message: 'form not found'})

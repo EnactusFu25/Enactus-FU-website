@@ -13,10 +13,9 @@ export const updateArticleSchema = Joi.object({
     body:
         Joi.object({
             title: Joi.string(),
-            content: Joi.string(),
-            oldPublicId: Joi.string()
+            content: Joi.string()
         }),
-    query:
+    params:
         Joi.object({
             id: generalValidationRule.dbId.required()
         }),
@@ -24,7 +23,7 @@ export const updateArticleSchema = Joi.object({
 })
 
 export const deleteArticleSchema = Joi.object({
-    query:
+    params:
         Joi.object({
             id: generalValidationRule.dbId.required()
         }),
@@ -32,7 +31,7 @@ export const deleteArticleSchema = Joi.object({
 })
 
 export const getArticleSchema = Joi.object({
-    query:
+    params:
         Joi.object({
            id: generalValidationRule.dbId.required()
         }),

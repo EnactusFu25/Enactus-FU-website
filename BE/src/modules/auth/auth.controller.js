@@ -8,12 +8,12 @@ export const login = async (req, res) => {
     const { email, password } = req.body
     const user = await User.findOne({ email})
     if (!user)
-        return res.status(400).json({message: 'invalid email or password'})
-    const isPasswordCorrect = await bcrypt.compareSync(password, user.password)
+        return res.status(400).json({message: 'invalid email or password', success: false})
+    const isPasswordCorrect = bcrypt.compareSync(password, user.password)
     if (!isPasswordCorrect)
-        return res.status(400).json({message: 'invalid email or password'})
-    const token = jwt.sign({email: user.email, id: user._id}, 'test', {expiresIn: '1h'})
-    res.status(200).json({message: 'logged in successfuly', result: user, token})
+        return res.status(400).json({message: 'invalid email or password', success: false})
+    const token = process.env.TOKEN_PREFIX + jwt.sign({email: user.email, id: user._id}, process.env.JWT_SECRET_LOGIN , {expiresIn: '1d'})
+    res.status(200).json({message: 'logged in successfuly', success: true, token})
 }
 export const signup = async (req, res) => {
     const { email, password, firstName, lastName } = req.body

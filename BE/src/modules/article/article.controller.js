@@ -27,40 +27,27 @@ export const createArticle = async (req, res) => {
     const Image = { secure_url, public_id }
     const article = new Article({title, content, Image, uploadedBy: req.AuthUser._id})
     await article.save()
-    res.status(201).json({message: "article created"})
+    res.status(201).json({message: "article created", article})
 }
 
 export const updateArticle = async (req, res) =>
 {
     const { id } = req.params
-    const { title, content, oldPublicId} = req.body
+    const { title, content} = req.body
     const article = await Article.findById(id)
-    if (oldPublicId)
-    {
-        if (!req.file) return next({ cause: 400, message: 'Image is required' })
-
-        const newPublicId = oldPublicId.split(`${article.folderId}/`)[1]
-        const newPath = oldPublicId.split(`${newPublicId}`)[0]
-
-        const { secure_url } = await cloudinaryConnection().uploader.upload(req.file.path, {
-            folder: newPath,
-            public_id: newPublicId
-        })
-        article.Image.secure_url = secure_url
-    }
     if (title) article.title = title
     if (content) article.content = content
     article.updatedAt = Date.now()
     article = await article.save()
     if (!article)
         return res.status(404).json({message: "article not found"})
-    res.status(200).json({message: "article updated"})
+    res.status(200).json({message: "article updated", article})
 }
 
 export const deleteArticle = async (req, res) => {
     const { id } = req.params
     const article = await Article.findByIdAndUpdate(id, {isDeleted: true, deletedAt: Date.now()})
     if (!article)
-        return res.status(404).json({message: "article not found"})
-    res.status(200).json({message: "article deleted"})
+        return res.status(404).json({message: "article not found", success: false})
+    res.status(200).json({message: "article deleted", success: true})
 }

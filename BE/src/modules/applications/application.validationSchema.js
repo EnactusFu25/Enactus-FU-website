@@ -15,6 +15,7 @@ export const applySchema = Joi.object({
         firstTime: Joi.boolean().required(),
         whyInterested: Joi.string().required(),
         commitment: Joi.string().required(),
+        whatDoYouKnowEnactus: Joi.string().required(),
         previousRole: Joi.string().required(),
         department: Joi.string().required().valid(departments.PM, departments.HR, departments.PR, departments.LSC, departments.Market, departments.Media, departments.Presentation, departments.BE, departments.FE, departments.DA),
         secondDepartment: Joi.string().valid(departments.PM, departments.HR, departments.PR, departments.LSC, departments.Market, departments.Media, departments.Presentation),

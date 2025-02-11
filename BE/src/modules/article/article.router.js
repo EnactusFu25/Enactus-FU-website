@@ -22,7 +22,6 @@ router.post('/',
     auth(articleEndpoints.manageArticle),
     expressAsyncHandler(articleController.createArticle))
 router.patch('/:id', 
-    multerMiddleHost(allowedExtensions.image).single('image'),
     validation(articleValidationSchema.updateArticleSchema),
     auth(articleEndpoints.manageArticle),
     expressAsyncHandler(articleController.updateArticle))
