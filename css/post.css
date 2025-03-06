@@ -1,8 +1,9 @@
 .post-container {
     padding: 50px 0;
-    min-height: 400px;
+    height: fit-content;
     background-color: var(--secondary-color);
     border-radius: 20px;
+    max-width: fit-content;
 }
 
 #post-details {
@@ -27,4 +28,18 @@
 #post-details button:hover {
     background-color: #fec122;
     color: white;
+}
+
+@media (max-width: 767px) {
+    .post-container img,
+    .post-container video {
+        max-width: 280px;
+    }
+}
+
+@media (min-width: 768px) {
+    .post-container img,
+    .post-container video {
+        width: 680px;
+    }
 }
