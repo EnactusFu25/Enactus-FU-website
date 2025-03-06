@@ -83,7 +83,7 @@ header {
     top: 0;
     width: 100%;
     background-color: var(--secondary-color);
-    z-index: 1;
+    z-index: 9999;
 }
 
 header .container {
@@ -122,7 +122,7 @@ header nav .toggle-menu {
 
 @media (min-width: 768px) {
     header nav .toggle-menu {
-      display: none;
+        display: none;
     }
 }
 
@@ -189,27 +189,28 @@ header nav .show {
 
 @media (max-width: 767px) {
     header nav .show {
-      display: none;
+        display: none;
     }
 
     header nav .toggle-menu:hover + .show {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: rgb(0 0 0 / 50%);
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgb(0 0 0 / 50%);
     }
 
     header nav .show li a {
-      padding: 15px !important;
+        padding: 15px !important;
     }
 
     ._header {
         margin: 0;
         display: block;
         padding: 20px;
+        z-index: 9999;
     }
     ._header ._container {
         display: flex;
