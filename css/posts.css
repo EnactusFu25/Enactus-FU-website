@@ -1,5 +1,6 @@
 .posts-container {
     margin: 150px 0 -50px;
+    width: fit-content;
 }
 
 #post-list {
@@ -70,5 +71,19 @@
     .post-card {
         min-width: 300px;
         margin: 0 auto 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .posts-container img,
+    .posts-container video {
+        max-width: 280px;
+    }
+}
+
+@media (min-width: 768px) {
+    .posts-container img,
+    .posts-container video {
+        width: 680px;
     }
 }
