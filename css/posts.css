@@ -75,15 +75,13 @@
 }
 
 @media (max-width: 767px) {
-    .posts-container img,
-    .posts-container video {
+    .posts-container img {
         max-width: 280px;
     }
 }
 
 @media (min-width: 768px) {
-    .posts-container img,
-    .posts-container video {
+    .posts-container img {
         width: 680px;
     }
 }
