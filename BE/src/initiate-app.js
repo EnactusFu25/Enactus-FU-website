@@ -2,12 +2,13 @@ import db_connection from "../DB/connection.js"
 import { globalResponse } from "./middlewares/global-response.middleware.js"
 import * as routers from "./modules/index.routes.js"
 import { DeleteOldImages, detecteUncofirmedUsers } from "./utils/crons.js"
-
+import cors from 'cors'
 
 export const initiate_app = (app, express) => {
     const port = +process.env.PORT
 
     app.use(express.json())
+    app.use(cors())
     db_connection()
 
     app.use("/auth", routers.authRouter)
