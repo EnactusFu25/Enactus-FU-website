@@ -87,7 +87,7 @@
     background-color: red;
 }
 
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (min-width: 768px) and (max-width: 1280px) {
     .create-post .postsContainer {
         display: flex;
         align-items: center;
@@ -95,9 +95,32 @@
     }
 }
 
-@media (max-width: 750px) {
-    .create-post .post {
-        min-width: 300px;
-        margin: 0 auto 50px;
+@media (max-width: 767px) {
+    .create-post {
+      margin-top: 100px;
+      padding: 0 15px;
     }
-}
+    
+    .create-post h1 {
+      font-size: 24px;
+    }
+    
+    .post-form {
+      width: 100%;
+    }
+    
+    #postContent {
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .create-post .post {
+      min-width: 100%;
+      margin: 10px 0;
+    }
+    
+    .create-post button {
+      width: 100%;
+      margin-right: 0;
+    }
+  }

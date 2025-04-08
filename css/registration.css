@@ -195,28 +195,6 @@ header, footer {
     display: none;
 }
 
-
-@media (max-width: 750px) {
-    .reg-container form {
-        overflow-y: scroll;
-    }
-
-    .reg-container form::-webkit-scrollbar {
-        display: none;
-    }
-
-    .reg-container form .fields .input-field {
-        width: calc(100% / 2 - 15px);
-    }    
-}
-
-@media (max-width: 500px) {
-    .reg-container form .fields .input-field {
-        width: 100%;
-    } 
-}
-
-
 /* Coming Soon */
 .coming-soon {
     position: fixed; /* Use fixed to cover the entire viewport */
@@ -279,6 +257,32 @@ header, footer {
     margin-top: 5px;
     color: rgba(255, 255, 255, 0.8);
 }
+
+@media (max-width: 767px) {
+    .reg-container {
+      margin-top: 100px;
+      padding: 15px;
+    }
+    
+    .reg-container form {
+      padding: 15px;
+    }
+    
+    .reg-container form .fields .input-field {
+      width: 100%;
+    }
+    
+    .reg-container form .buttons {
+      flex-direction: column;
+    }
+    
+    .reg-container form button,
+    .back-btn {
+      margin-right: 0;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+  }
 
 /* Animations */
 @keyframes fadeIn {

@@ -65,7 +65,7 @@
     padding: 30px;
 }
 
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (min-width: 768px) and (max-width: 1280px) {
     #post-list {
         display: flex;
         align-items: center;
@@ -73,21 +73,23 @@
     }
 }
 
-@media (max-width: 750px) {
-    .post-card {
-        min-width: 300px;
-        margin: 0 auto 50px;
-    }
-}
-
+/* تحسينات للهواتف المحمولة */
 @media (max-width: 767px) {
-    .posts-container img {
-        max-width: 280px;
+    .posts-container {
+      margin: 100px 15px -50px;
     }
-}
-
-@media (min-width: 768px) {
-    .posts-container img {
-        width: 680px;
+    
+    .post-card {
+      width: 100%;
+      margin: 0 auto 30px;
     }
-}
+    
+    .card-body img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .view-details {
+      width: 100%;
+    }
+  }
