@@ -287,85 +287,52 @@ footer i {
     font-size: 20px;
 }
 
+/* تحسين dropdown الفوتر لجميع الأجهزة */
 footer .dropdown {
-    position: relative; 
-}
-
-footer .dropdown .dropbtn {
+    position: relative;
+    display: inline-block;
+  }
+  
+  footer .dropbtn {
+    background: none;
     border: none;
-    outline: none;
     color: white;
-    padding: 10px 10px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0 6px;
-    cursor: pointer; 
-}
-
-footer .dropdown:hover .dropbtn {
-    background-color: var(--main-color);
-}
-
-footer .dropdown-content {
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+  }
+  
+  footer .dropdown-content {
     display: none;
     position: absolute;
-    top: 0; 
-    left: 61%; 
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    min-width: 200px;
     background-color: white;
-}
-
-footer .dropdown:hover .dropdown-content {
-    display: block;
-}
-
-footer .dropdown .dropdown-content a {
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 0;
+    top: 100%;
+  }
+  
+  footer .dropdown-content a {
     color: var(--secondary-color);
-    padding: 10px 6.5px; 
+    padding: 12px 16px;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     text-align: left;
-    transition: background-color 0.3s; 
-}
-
-footer .dropdown-content a:hover {
+  }
+  
+  footer .dropdown-content a:hover {
     background-color: var(--secondary-color);
     color: var(--main-color);
+  }
+
+  footer i img {
+    width: 20px;
+    height: 20px;
 }
 
-@media (max-width: 576px) {
-    footer .footer-content {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-    }
-    footer .footerHUL h3 {
-        margin-top: 50px;
-    }
+@media (max-width: 767px) {
     footer .dropdown .dropbtn {
-        margin-left: -100px;
-    }
-    footer .dropdown .dropdown-content {
-        display: block;
-        left: 44%;
-    }
-}
-
-@media (max-width: 320px) {
-    footer .footer-content {
-        flex-direction: column;
-        align-items: center;
-    }
-    footer .footerHUL h3 {
-        margin-top: 50px;
-    }
-    footer .dropdown .dropbtn {
-        margin-left: -100px;
-    }
-    footer .dropdown .dropdown-content {
-        display: block;
-        left: 44%;
+        color: white;
     }
 }
