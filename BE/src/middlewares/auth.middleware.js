@@ -25,7 +25,7 @@ export const auth = (accessRoles, require = true) =>
             if (!decodedData || !decodedData.id) throw (new Error('invalid token payload', { cause: 400 }))
 
             // user check 
-            const foundUser = await User.findById(decodedData.id, 'name email role') // loggdInUser Role
+            const foundUser = await User.findById(decodedData.id, 'name email role _id') // loggdInUser Role
             if (!foundUser || foundUser.isDeleted) 
                 throw (new Error('please signUp first', { cause: 404 }))
 
