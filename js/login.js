@@ -45,10 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Store auth token and user data
+                // Store auth token
                 localStorage.setItem('access_token', data.token);
-                localStorage.setItem('user_id', data.user._id);
-                localStorage.setItem('user_name', data.user.name);
+                
+                // Store user data (with safety checks)
+                if (data.user) {
+                    if (data.user._id) localStorage.setItem('user_id', data.user._id);
+                    if (data.user.name) localStorage.setItem('user_name', data.user.name);
+                }
                 
                 // Redirect user to home page
                 window.location.href = 'index.html';
