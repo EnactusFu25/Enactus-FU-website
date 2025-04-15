@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // Redirect user to home page
-                window.location.href = 'index.html';
+                window.location.href = 'createPost.html';
             } else {
                 // Display error message
                 errorMessage.textContent = data.message || 'Login failed. Please check your credentials.';
