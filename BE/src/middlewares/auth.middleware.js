@@ -32,7 +32,7 @@ export const auth = (accessRoles, require = true) =>
             // auhtorization
             if (!accessRoles.includes(foundUser.role)) throw (new Error('unauthorized', { cause: 401 }))
             
-            req.authUser = foundUser
+            req.AuthUser = foundUser
             next()
         } 
         catch (error) 
