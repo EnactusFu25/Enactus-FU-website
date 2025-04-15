@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
     recoveryEmail:
     {
         type: String,
-        required: true
+        required: false
     },
     password:
     {
@@ -33,6 +33,7 @@ const userSchema = mongoose.Schema({
     {
         type: String,
         required: true,
+        default: systemRoles.MEDIA,
         enum: [systemRoles.ADMIN, systemRoles.HR, systemRoles.MEDIA]
     },
     isDeleted:
