@@ -9,6 +9,7 @@ export const initiate_app = (app, express) => {
 
     app.use(express.json())
     app.use(cors())
+    app.options('*', cors())
     db_connection()
 
     app.use("/auth", routers.authRouter)
