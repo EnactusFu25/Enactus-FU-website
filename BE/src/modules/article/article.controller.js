@@ -1,5 +1,6 @@
 import Article from '../../../DB/models/article.model.js'  
 import cloudinaryConnection from '../../utils/cloudinary.js'
+import generateUniqueString from "../../utils/generate-Unique-String.js";
 
 export const getArticles = async (req, res) => {
     const articles = await Article.find({isDeleted: false, approved: true})
