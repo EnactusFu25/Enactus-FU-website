@@ -17,15 +17,19 @@ function createPost() {
     if (!checkAuth()) return;
 
     const content = document.getElementById('postContent').value;
+    const title = document.getElementById('postTitle').value;
     const imageInput = document.getElementById('postImage');
     const postsContainer = document.getElementById('postsContainer');
 
-    if (content.trim() === '' && imageInput.files.length === 0) {
+    if (content.trim() === '' && imageInput.files.length === 0 && title.trim() === '') {
         alert('Please enter content or select an image.');
         return;
     }
 
     const formData = new FormData();
+    if (title.trim() !== '') {
+        formData.append('title', title);
+    }
     if (content.trim() !== '') {
         formData.append('content', content);
     }
@@ -47,13 +51,31 @@ function createPost() {
         }
     })
     .then(response => {
-        if (!response.ok) {
+        return response.json().catch(e => {
             throw new Error(`Response code: ${response.status}`);
-        }
-        return response.json();
+        });
     })
     .then(postData => {
-        postsContainer.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            postsContainer.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
+        
+        // Check if we have article data even if success is false
+        if (postData.article) {
+            const postDiv = createPostElement(postData.article);
+            postsContainer.prepend(postDiv);
+            
+            document.getElementById('postContent').value = '';
+            document.getElementById('postImage').value = '';
+            document.getElementById('postTitle').value = '';
+            
+            // Show success message
+            alert('Post created successfully!');
+            return;
+        }
         
         if (postData.success === false) {
             alert(postData.message || 'Error creating post');
@@ -63,15 +85,14 @@ function createPost() {
             }
             return;
         }
-        
-        const postDiv = createPostElement(postData.article);
-        postsContainer.prepend(postDiv);
-
-        document.getElementById('postContent').value = '';
-        document.getElementById('postImage').value = '';
     })
     .catch(error => {
-        postsContainer.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            postsContainer.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
         console.error('Error creating post:', error);
         alert('Error creating post: ' + error.message);
     });
@@ -81,87 +102,174 @@ function createPost() {
 function editPost(postDiv, postData) {
     if (!checkAuth()) return;
 
-    const contentP = postDiv.querySelector('p');
+    const titleH3 = postDiv.querySelector('.post-title');
+    const contentP = postDiv.querySelector('.post-content');
+    
+    // Create form for editing
+    const editForm = document.createElement('div');
+    editForm.className = 'edit-form';
+    
+    // Create title input
+    const titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.className = 'edit-title';
+    titleInput.value = titleH3 ? titleH3.textContent : '';
+    editForm.appendChild(titleInput);
+    
+    // Create content textarea
+    const textarea = document.createElement('textarea');
+    textarea.className = 'edit-textarea';
+    textarea.value = contentP ? contentP.textContent : '';
+    editForm.appendChild(textarea);
+    
+    // Replace content elements with edit form
+    if (titleH3) postDiv.removeChild(titleH3);
+    if (contentP) postDiv.removeChild(contentP);
+    
+    // Insert edit form after the date element (if exists)
+    const dateDiv = postDiv.querySelector('.post-date');
+    if (dateDiv) {
+        postDiv.insertBefore(editForm, dateDiv.nextSibling);
+    } else {
+        postDiv.insertBefore(editForm, postDiv.firstChild);
+    }
 
-    if (contentP) {
-        const textarea = document.createElement('textarea');
-        textarea.value = contentP.textContent;
-        textarea.className = 'edit-textarea';
-        postDiv.replaceChild(textarea, contentP);
+    const buttonsDiv = postDiv.querySelector('.buttons');
+    const originalButtons = buttonsDiv.innerHTML;
 
-        const buttonsDiv = postDiv.querySelector('.buttons');
-        const originalButtons = buttonsDiv.innerHTML;
+    // Create save and cancel buttons
+    buttonsDiv.innerHTML = '';
+    
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Save';
+    saveButton.className = 'save-button';
+    buttonsDiv.appendChild(saveButton);
+    
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.className = 'cancel-button';
+    buttonsDiv.appendChild(cancelButton);
 
-        // Create save and cancel buttons
-        buttonsDiv.innerHTML = '';
+    saveButton.onclick = function() {
+        const updatedTitle = titleInput.value;
+        const updatedContent = textarea.value;
         
-        const saveButton = document.createElement('button');
-        saveButton.textContent = 'Save';
-        saveButton.className = 'save-button';
-        buttonsDiv.appendChild(saveButton);
-        
-        const cancelButton = document.createElement('button');
-        cancelButton.textContent = 'Cancel';
-        cancelButton.className = 'cancel-button';
-        buttonsDiv.appendChild(cancelButton);
+        if (updatedTitle.trim() === '') {
+            alert('Title cannot be empty');
+            return;
+        }
 
-        saveButton.onclick = function() {
-            const updatedContent = textarea.value;
+        // Create loading indicator
+        const loadingIndicator = document.createElement('span');
+        loadingIndicator.className = 'loading-indicator';
+        loadingIndicator.textContent = 'Saving...';
+        buttonsDiv.appendChild(loadingIndicator);
+
+        fetch(`${API_URL}/${postData._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'accesstoken': localStorage.getItem('access_token')
+            },
+            body: JSON.stringify({
+                title: updatedTitle,
+                content: updatedContent
+            })
+        })
+        .then(response => {
+            return response.json().catch(e => {
+                throw new Error(`Response code: ${response.status}`);
+            });
+        })
+        .then(response => {
+            // Safely remove loading indicator
+            try {
+                buttonsDiv.removeChild(loadingIndicator);
+            } catch (error) {
+                console.warn("Could not remove loading indicator:", error);
+            }
             
-            if (updatedContent.trim() === '') {
-                alert('Content cannot be empty');
+            // Check if we have article data even if success is false
+            if (response.article) {
+                // Remove edit form
+                postDiv.removeChild(editForm);
+                
+                // Recreate title element
+                const newTitleH3 = document.createElement('h3');
+                newTitleH3.className = 'post-title';
+                newTitleH3.textContent = updatedTitle;
+                
+                // Recreate content element
+                const newContentP = document.createElement('p');
+                newContentP.className = 'post-content';
+                newContentP.textContent = updatedContent;
+                
+                // Insert elements in correct order
+                if (dateDiv) {
+                    postDiv.insertBefore(newContentP, dateDiv.nextSibling);
+                    postDiv.insertBefore(newTitleH3, dateDiv);
+                } else {
+                    postDiv.insertBefore(newContentP, postDiv.firstChild);
+                    postDiv.insertBefore(newTitleH3, postDiv.firstChild);
+                }
+                
+                // Restore original buttons
+                buttonsDiv.innerHTML = originalButtons;
+                
+                console.log('Post updated:', response.article);
                 return;
             }
-
-            // Create loading indicator
-            const loadingIndicator = document.createElement('span');
-            loadingIndicator.className = 'loading-indicator';
-            loadingIndicator.textContent = 'Saving...';
-            buttonsDiv.appendChild(loadingIndicator);
-
-            fetch(`${API_URL}/${postData._id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'accesstoken': localStorage.getItem('access_token')
-                },
-                body: JSON.stringify({content: updatedContent})
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Response code: ${response.status}`);
+            
+            if (response.success === false) {
+                alert(response.message || 'Error updating post');
+                if (response.error_msg === "please login first") {
+                    localStorage.removeItem('access_token');
+                    window.location.href = 'login.html';
                 }
-                return response.json();
-            })
-            .then(response => {
+                return;
+            }
+        })
+        .catch(error => {
+            // Safely remove loading indicator
+            try {
                 buttonsDiv.removeChild(loadingIndicator);
-                
-                if (response.success === false) {
-                    alert(response.message || 'Error updating post');
-                    if (response.error_msg === "please login first") {
-                        localStorage.removeItem('access_token');
-                        window.location.href = 'login.html';
-                    }
-                    return;
-                }
-                
-                contentP.textContent = updatedContent;
-                postDiv.replaceChild(contentP, textarea);
-                buttonsDiv.innerHTML = originalButtons;
-                console.log('Post updated:', response.article);
-            })
-            .catch(error => {
-                buttonsDiv.removeChild(loadingIndicator);
-                console.error('Error updating post:', error);
-                alert('Error updating post: ' + error.message);
-            });
-        };
+            } catch (error) {
+                console.warn("Could not remove loading indicator:", error);
+            }
+            console.error('Error updating post:', error);
+            alert('Error updating post: ' + error.message);
+        });
+    };
 
-        cancelButton.onclick = function() {
-            postDiv.replaceChild(contentP, textarea);
-            buttonsDiv.innerHTML = originalButtons;
-        };
-    }
+    cancelButton.onclick = function() {
+        // Remove edit form
+        postDiv.removeChild(editForm);
+        
+        // Recreate original elements
+        if (titleH3) {
+            const newTitleH3 = document.createElement('h3');
+            newTitleH3.className = 'post-title';
+            newTitleH3.textContent = titleH3.textContent;
+            
+            if (dateDiv) {
+                postDiv.insertBefore(newTitleH3, dateDiv);
+            } else {
+                postDiv.insertBefore(newTitleH3, postDiv.firstChild);
+            }
+        }
+        
+        if (contentP) {
+            const newContentP = document.createElement('p');
+            newContentP.className = 'post-content';
+            newContentP.textContent = contentP.textContent;
+            
+            const referenceNode = dateDiv ? dateDiv.nextSibling : postDiv.firstChild;
+            postDiv.insertBefore(newContentP, referenceNode);
+        }
+        
+        // Restore original buttons
+        buttonsDiv.innerHTML = originalButtons;
+    };
 }
 
 // Delete post
@@ -185,15 +293,19 @@ function deletePost(postDiv, postData) {
         }
     })
     .then(response => {
-        if (!response.ok) {
+        return response.json().catch(e => {
             throw new Error(`Response code: ${response.status}`);
-        }
-        return response.json();
+        });
     })
     .then(response => {
-        postDiv.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            postDiv.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
         
-        if (response.success === false) {
+        if (response.success === false && !response.message?.includes('deleted')) {
             alert(response.message || 'Error deleting post');
             if (response.error_msg === "please login first") {
                 localStorage.removeItem('access_token');
@@ -203,10 +315,17 @@ function deletePost(postDiv, postData) {
         }
         
         const postsContainer = document.getElementById('postsContainer');
-        postsContainer.removeChild(postDiv);
+        if (postsContainer && postsContainer.contains(postDiv)) {
+            postsContainer.removeChild(postDiv);
+        }
     })
     .catch(error => {
-        postDiv.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            postDiv.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
         console.error('Error deleting post:', error);
         alert('Error deleting post: ' + error.message);
     });
@@ -227,36 +346,50 @@ function loadPosts() {
     loadingIndicator.textContent = 'Loading posts...';
     targetElement.appendChild(loadingIndicator);
     
-    // Determine URL based on target element
-    // Use different endpoint for public news vs personal posts
-    const url = postList ? `${API_URL}/all` : API_URL;
+    // Corrected URL patterns based on API testing
+    // Try to fetch user's own posts if we're on the create post page
+    const token = localStorage.getItem('access_token');
+    let url;
+    
+    if (postList) {
+        url = `${API_URL}`; // Public posts endpoint
+    } else {
+        // For user's posts, use the main endpoint with auth token
+        url = API_URL;
+    }
     
     fetch(url, {
         method: 'GET',
         headers: {
-            // If postsContainer (personal posts), include auth token
-            ...(postsContainer && {'accesstoken': localStorage.getItem('access_token')})
+            ...(token && {'accesstoken': token})
         }
     }) 
     .then(response => {
-        if (!response.ok) {
+        return response.json().catch(e => {
             throw new Error(`Response code: ${response.status}`);
-        }
-        return response.json();
+        });
     })
     .then(data => {
-        targetElement.removeChild(loadingIndicator);
-        
-        if (data.success === false) {
-            if (data.error_msg === "please login first" && postsContainer) {
-                localStorage.removeItem('access_token');
-                window.location.href = 'login.html';
-                return;
-            }
-            throw new Error(data.message || 'Error retrieving posts');
+        // Safely remove loading indicator
+        try {
+            targetElement.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
         }
         
-        const articles = data.articles || [];
+        // Determine what to do with the data
+        let articles = [];
+        
+        if (data.articles) {
+            articles = data.articles;
+        } else if (data.article) {
+            // Single article in response
+            articles = [data.article];
+        } else if (Array.isArray(data)) {
+            // Direct array of articles
+            articles = data;
+        }
+        
         targetElement.innerHTML = '';
         
         if (articles.length === 0) {
@@ -274,7 +407,8 @@ function loadPosts() {
                 postCard.classList.add("post-card");
                 postCard.innerHTML = `
                     <div class="card-body">
-                        ${post.image ? `<img src="${post.image.secure_url}" alt="${post.title || 'Post image'}"/>` : ''}
+                        ${post.image ? `<img src="${post.image.secure_url}" alt="${post.title || 'Post image'}"/>` : 
+                          post.Image ? `<img src="${post.Image.secure_url}" alt="${post.title || 'Post image'}"/>` : ''}
                         ${post.title ? `<h3>${post.title}</h3>` : ''}
                         <p>${post.content || ''}</p>
                         <button class="view-details" onclick="location.href='post.html?id=${post._id}'">View Details</button>
@@ -289,13 +423,27 @@ function loadPosts() {
         });
     })
     .catch(error => {
-        targetElement.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            targetElement.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
+        
         console.error('Error loading posts:', error);
         
         const errorMsg = document.createElement('p');
         errorMsg.className = 'error-message';
         errorMsg.textContent = 'Error loading posts: ' + error.message;
         targetElement.appendChild(errorMsg);
+        
+        // If we're on the posts creation page, show an empty state to allow creation
+        if (postsContainer) {
+            const emptyStateMsg = document.createElement('p');
+            emptyStateMsg.className = 'empty-state-message';
+            emptyStateMsg.textContent = 'You can create new posts above.';
+            postsContainer.appendChild(emptyStateMsg);
+        }
     });
 }
 
@@ -305,11 +453,19 @@ function createPostElement(postData) {
     postDiv.className = 'post';
     postDiv.setAttribute('data-post-id', postData._id);
 
+    // Add title if available
+    if (postData.title) {
+        const titleH3 = document.createElement('h3');
+        titleH3.className = 'post-title';
+        titleH3.textContent = postData.title;
+        postDiv.appendChild(titleH3);
+    }
+
     // Add date if available
-    if (postData.createdAt) {
+    if (postData.createdAt || postData.uploadedAt) {
         const dateDiv = document.createElement('div');
         dateDiv.className = 'post-date';
-        const postDate = new Date(postData.createdAt);
+        const postDate = new Date(postData.createdAt || postData.uploadedAt);
         dateDiv.textContent = postDate.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -328,13 +484,14 @@ function createPostElement(postData) {
         postDiv.appendChild(contentP);
     }
 
-    // Add image if available
-    if (postData.image && postData.image.secure_url) {
+    // Add image if available - handle both image and Image property names
+    const imageData = postData.image || postData.Image;
+    if (imageData && imageData.secure_url) {
         const imageContainer = document.createElement('div');
         imageContainer.className = 'post-image-container';
         
         const image = document.createElement('img');
-        image.src = postData.image.secure_url;
+        image.src = imageData.secure_url;
         image.alt = 'Post image';
         image.className = 'post-image';
         
@@ -344,7 +501,7 @@ function createPostElement(postData) {
             modal.className = 'image-modal';
             
             const modalImg = document.createElement('img');
-            modalImg.src = postData.image.secure_url;
+            modalImg.src = imageData.secure_url;
             modal.appendChild(modalImg);
             
             const closeBtn = document.createElement('span');
@@ -439,15 +596,19 @@ function loadSinglePost() {
         method: 'GET'
     })
     .then(response => {
-        if (!response.ok) {
+        return response.json().catch(e => {
             throw new Error(`Response code: ${response.status}`);
-        }
-        return response.json();
+        });
     })
     .then(data => {
-        postContainer.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            postContainer.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
         
-        if (data.success === false) {
+        if (data.success === false && !data.article) {
             throw new Error(data.message || 'Error retrieving post');
         }
         
@@ -457,21 +618,26 @@ function loadSinglePost() {
             throw new Error('Post not found');
         }
         
+        // Handle both image and Image property names
+        const imageData = post.image || post.Image;
+        
         postContainer.innerHTML = `
             <div class="post-card single-post">
                 <div class="post-header">
                     ${post.title ? `<h2>${post.title}</h2>` : ''}
                     <div class="post-metadata">
-                        ${post.createdAt ? `<span class="post-date">Posted on: ${new Date(post.createdAt).toLocaleDateString('en-US', {
-                            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
-                        })}</span>` : ''}
-                        ${post.author ? `<span class="post-author">By: ${post.author.name || 'Unknown'}</span>` : ''}
+                        ${post.createdAt || post.uploadedAt ? 
+                          `<span class="post-date">Posted on: ${new Date(post.createdAt || post.uploadedAt).toLocaleDateString('en-US', {
+                              year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+                          })}</span>` : ''}
+                        ${post.author || post.uploadedBy ? 
+                          `<span class="post-author">By: ${(post.author && post.author.name) || post.uploadedBy || 'Unknown'}</span>` : ''}
                     </div>
                 </div>
                 
-                ${post.image && post.image.secure_url ? 
+                ${imageData && imageData.secure_url ? 
                     `<div class="post-image-container">
-                        <img src="${post.image.secure_url}" alt="Post image" class="post-image-full" />
+                        <img src="${imageData.secure_url}" alt="Post image" class="post-image-full" />
                     </div>` : ''}
                 
                 <div class="post-content">
@@ -485,7 +651,13 @@ function loadSinglePost() {
         `;
     })
     .catch(error => {
-        postContainer.removeChild(loadingIndicator);
+        // Safely remove loading indicator
+        try {
+            postContainer.removeChild(loadingIndicator);
+        } catch (error) {
+            console.warn("Could not remove loading indicator:", error);
+        }
+        
         console.error('Error loading post:', error);
         
         postContainer.innerHTML = `

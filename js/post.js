@@ -19,12 +19,16 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            // Check if the response contains an article
-            if (data && data.article) {
-                const article = data.article;
+            // Get the article from the response
+            const article = data.article || data;
+            
+            if (article && article.title) {
+                // Handle different image property structures
+                const imageUrl = article.image?.secure_url || article.Image?.secure_url || '';
+                
                 postDetailsContainer.innerHTML = `
                     <div class="post-card">
-                        <img src="${article.Image.secure_url}" alt="${article.title}">
+                        <img src="${imageUrl}" alt="${article.title}">
                         <h2>${article.title}</h2>
                         <p>${article.content}</p>
                         <button onclick="window.history.back()">Back</button>

@@ -17,20 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     <p>No articles were found. Please check back later.</p>
                 </div>`;
             } else if(Array.isArray(data)) {
-                // If data is an array, it means there are articles
-                data.forEach(post => {
-                    const postCard = document.createElement("div");
-                    postCard.classList.add("post-card");
-                    postCard.innerHTML = `
-                    <div class="card-body">
-                    <img src="${post.Image.secure_url}" alt="${post.title}"/>
-                    <h3>${post.title}</h3>
-                    <p>${post.content}</p>
-                    <button class="view-details" onclick="location.href='post.html?id=${post._id}'">View details</button>
-                    </div>
-                    `;
-                    postList.appendChild(postCard);
-                });
+                // If data is directly an array, use it
+                displayArticles(data, postList);
+            } else if(data.articles && Array.isArray(data.articles)) {
+                // If data contains articles array property
+                displayArticles(data.articles, postList);
+            } else if(data.article) {
+                // If data contains a single article object
+                displayArticles([data.article], postList);
             } else {
                 // In case of an unexpected response
                 postList.innerHTML = `
@@ -49,6 +43,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 <h3>Connection Error</h3>
                 <p>We couldn't connect to the server. Please check your internet connection and try again.</p>
             </div>`;
+        });
+    }
+    
+    // Helper function to display articles
+    function displayArticles(articles, container) {
+        articles.forEach(post => {
+            const postCard = document.createElement("div");
+            postCard.classList.add("post-card");
+            
+            // Handle different image property structures
+            const imageUrl = post.image?.secure_url || post.Image?.secure_url || '';
+            
+            postCard.innerHTML = `
+            <div class="card-body">
+                <img src="${imageUrl}" alt="${post.title}"/>
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <button class="view-details" onclick="location.href='post.html?id=${post._id}'">View details</button>
+            </div>
+            `;
+            container.appendChild(postCard);
         });
     }
 });
