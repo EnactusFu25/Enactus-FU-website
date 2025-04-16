@@ -1,3 +1,36 @@
+/* Title input styling */
+.post-title-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Post title styling */
+.post-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 18px;
+}
+
+/* Edit title field */
+.edit-title {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Edit form */
+.edit-form {
+    margin-bottom: 15px;
+}
+
 .create-post {
     display: flex;
     flex-direction: column;
